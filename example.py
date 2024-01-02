@@ -1,7 +1,4 @@
 import speech_recognition
-import re
-import time
-import os
 import pyaudio
 import wave
 
@@ -36,7 +33,8 @@ def audioFileToText(audioFileName: str):
     with speech_recognition.AudioFile(audioFileName) as source:
         r.adjust_for_ambient_noise(source, duration=0)
         audio = r.record(source)
-        text = r.recognize_google(audio, language='en-US') # 英文
+        # text = r.recognize_google(audio, language='en-US') # 英文
+        text = r.recognize_google(audio, language='zh-tw') # 中文
         return text
 
 # 從麥克風輸入轉換成文字
@@ -59,13 +57,13 @@ def main():
     outFile = './Voice.txt'
     f = open(outFile, 'w', encoding='utf-8-sig')
 
-    # print('播放音檔:')
-    # audioFileName = 'Speech.wav'
-    # playVoice(audioFileName)
+    print('播放音檔:')
+    audioFileName = 'output.wav'
+    playVoice(audioFileName)
 
-    # print('轉換語音檔成文字:')
-    # text = audioFileToText(audioFileName)
-    # print(text)
+    print('轉換語音檔成文字:')
+    text = audioFileToText(audioFileName)
+    print(text)
 
     print('口語翻譯成文字:')
     text = voiceToText()
