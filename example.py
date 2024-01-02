@@ -57,11 +57,11 @@ def main():
     outFile = './Voice.txt'
     f = open(outFile, 'w', encoding='utf-8-sig')
 
-    print('播放音檔:')
+    # print('播放音檔:')
     audioFileName = 'output.wav'
-    playVoice(audioFileName)
+    # playVoice(audioFileName)
 
-    print('轉換語音檔成文字:')
+    print(f'轉換語音檔({audioFileName})成文字:')
     text = audioFileToText(audioFileName)
     print(text)
 
